@@ -11,4 +11,8 @@ public class Loc {
     public Loc(String place) {
         this.place = place;
     }
+
+    public String getPlace() {
+        return place;
+    }
 }

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.mylocationmanager">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDTLvyt5Cry0n5eJDXWJNTluMHRuDYYc5s"/>
+    </application>
 </manifest>
