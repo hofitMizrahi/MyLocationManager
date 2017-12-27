@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, "new Git Test", Toast.LENGTH_SHORT).show();
+        RecyclerFragment myListFragment= new RecyclerFragment();
+        getFragmentManager().beginTransaction().add(R.id.activity_choose,myListFragment ).commit();
     }
 }
