@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/activity_choose"
-    tools:context="com.example.user.mylocationmanager.MainActivity">
-</android.support.constraint.ConstraintLayout>
+    android:orientation="horizontal"
+    tools:context="com.example.user.mylocationmanager.MainActivity"
+    android:paddingTop="@dimen/item_dimen"
+    android:paddingRight="@dimen/item_dimen"
+    android:paddingBottom="@dimen/item_dimen"
+    android:paddingLeft="@dimen/item_dimen">
+
+    <LinearLayout
+        android:id="@+id/list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button3"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button3"
+        android:layout_marginTop="11dp"
+        android:orientation="horizontal" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/list_layout"
+        android:layout_alignParentBottom="true"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_marginEnd="23dp"
+        android:text="Button" />
+
+</RelativeLayout>

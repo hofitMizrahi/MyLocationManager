@@ -55,9 +55,6 @@ class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationRecycler
             final TextView textView = itemView.findViewById(R.id.location_name_TV);
             textView.setText(currentCity.getPlace());
 
-//            ImageView imageView =itemView.findViewById(R.id.cityIV);
-//            imageView.setImageResource(currentCity.res);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
