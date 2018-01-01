@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/map_layout"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.mylocationmanager.AddLocation">
+
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:elevation="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="#fff"
+        android:layout_marginTop="@dimen/item_dimen"
+        android:layout_marginRight="@dimen/item_dimen"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/linearLayout">
+
+        <EditText
+            android:id="@+id/newAddrees_ET"
+            android:layout_width="328dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Enter addres.."
+            android:inputType="textPersonName" />
+
+        <Button
+
+            android:id="@+id/search_address_IV"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+
+            android:layout_weight="1"
+            android:background="@drawable/ic_search" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save_Address_Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp"
+        android:text="save" />
+</RelativeLayout>
+

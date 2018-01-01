@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_weight="2"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.example.user.mylocationmanager.MainActivity"
+    android:paddingTop="@dimen/item_dimen"
+    android:paddingRight="@dimen/item_dimen"
+    android:paddingBottom="@dimen/item_dimen"
+    android:paddingLeft="@dimen/item_dimen">
+
+    <LinearLayout
+        android:id="@+id/list_layout"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/map_land_layout"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp">
+
+    </LinearLayout>
+
+</LinearLayout>
