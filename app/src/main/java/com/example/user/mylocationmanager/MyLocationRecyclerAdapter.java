@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user on 27/12/2017.
  */
 
 class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationRecyclerAdapter.MyViewHoder> {
+
     ArrayList<Loc> allLocations;
     Context context;
 
@@ -27,6 +29,7 @@ class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationRecycler
         View viewFromXML = LayoutInflater.from(context).inflate(R.layout.single_list_item, null);
         MyViewHoder singleItem = new MyViewHoder(viewFromXML);
         return singleItem;
+
     }
 
     @Override
@@ -58,8 +61,7 @@ class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationRecycler
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    MyCitychanger citychanger= (MyCitychanger) context;
-//                    citychanger.changeFragments(currentCity);
+
                     MyFragmentChanger citychanger= (MyFragmentChanger) context;
                     citychanger.changeFragments(currentCity);
                 }

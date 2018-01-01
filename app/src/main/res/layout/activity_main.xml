@@ -21,18 +21,19 @@
         android:orientation="horizontal" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/add_location_Btn"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/list_layout"
         android:layout_alignParentBottom="true"
-        android:text="Button" />
+        android:background="@drawable/ic_action_name"
+        android:onClick="addNewLocationBtn" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button2"
+        android:layout_alignBottom="@+id/add_location_Btn"
         android:layout_marginEnd="23dp"
         android:text="Button" />
 

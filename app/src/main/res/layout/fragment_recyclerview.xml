@@ -2,11 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.mylocationmanager.RecyclerFragment"
+    tools:context="com.example.user.mylocationmanager.ListFragment"
     android:id="@+id/list_layout">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_fragment_ID"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
