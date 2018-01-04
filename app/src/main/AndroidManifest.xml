@@ -7,7 +7,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher_background"
+        android:name="com.orm.SugarApp"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -23,6 +24,11 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDTLvyt5Cry0n5eJDXWJNTluMHRuDYYc5s" />
+
+        <meta-data android:name="DATABASE" android:value="places.db" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.user.mylocationmanager" />
 
         <activity android:name=".AddLocation"></activity>
     </application>

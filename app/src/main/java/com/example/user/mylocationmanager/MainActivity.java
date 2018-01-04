@@ -1,9 +1,7 @@
 package com.example.user.mylocationmanager;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,44 +15,29 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.orm.SugarDb;
 
 public class MainActivity extends AppCompatActivity implements MyFragmentChanger{
 
-    DBmanager myDB;
     int orientation;
-    MapFragment cityMapFragmnet;
+    MapFragment mapFragment;
+    ListFragment listFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myDB = new DBmanager(this);
-
-        if(isPortrait()){
-            ListFragment listFragment= new ListFragment();
-            getFragmentManager().beginTransaction().add(R.id.list_layout,listFragment).commit();
-
-        }else{
-
-            ListFragment listFragment= new ListFragment();
-            getFragmentManager().beginTransaction().add(R.id.list_layout,listFragment).commit();
-
-            cityMapFragmnet= new MapFragment();
-            getFragmentManager().beginTransaction().add(R.id.map_land_layout,cityMapFragmnet).commit();
-
-        }
+        setFragments();
     }
 
     @Override
     public void changeFragments(final Loc location) {
 
         if(isPortrait()) {
-            cityMapFragmnet= new MapFragment();
-            getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.list_layout, cityMapFragmnet).commit();
+            mapFragment = new MapFragment();
+            getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.list_layout, mapFragment).commit();
         }
-            cityMapFragmnet.getMapAsync(new OnMapReadyCallback() {
+            mapFragment.getMapAsync(new OnMapReadyCallback() {
                 @Override
                 public void onMapReady(GoogleMap googleMap) {
                     googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -110,7 +93,10 @@ public class MainActivity extends AppCompatActivity implements MyFragmentChanger
 
             // alertDialog --> ask if the user wont to delete his list
             case R.id.deleteAll:
-                        myDB.deleteAll(); // delete from DB
+                //delete from DB
+
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
                 return true;
             // user click to EXIT from this App
             case R.id.exit:
@@ -118,5 +104,25 @@ public class MainActivity extends AppCompatActivity implements MyFragmentChanger
                 return true;
         }
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        setFragments();
+    }
+
+    private void setFragments(){
+
+        listFragment= new ListFragment();
+        getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.list_layout, listFragment).commit();
+
+        if(!isPortrait()){
+
+            mapFragment = new MapFragment();
+            getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.map_land_layout, mapFragment).commit();
+
+        }
     }
 }

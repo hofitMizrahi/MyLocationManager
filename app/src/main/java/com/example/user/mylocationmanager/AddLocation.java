@@ -24,21 +24,18 @@ import java.util.List;
 
 public class AddLocation extends AppCompatActivity{
 
-    LocationManager locationManager;
-    LocationListener locationListener;
+
     MapFragment mapFragment;
     EditText userAddressET;
-    DBmanager myDb;
     LatLng latLng;
     String userAddress;
     List<Address> listAddress;
+    Address myAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_location);
-
-        myDb = new DBmanager(this);
 
         //set the map fragment to the layout
         mapFragment = new MapFragment();
@@ -54,8 +51,9 @@ public class AddLocation extends AppCompatActivity{
 
                 if(getAddressIfLocationFound()){
 
-                    Address myAddress = listAddress.get(0);
-                    myDb.insertNewLocation(userAddress, String.valueOf(myAddress.getLatitude()), String.valueOf(myAddress.getLongitude()));
+                    myAddress = listAddress.get(0);
+                    Loc loc = new Loc(myAddress.getAddressLine(0), myAddress.getLatitude(), myAddress.getLongitude());
+                    loc.save();
 
                     Intent intent = new Intent(AddLocation.this, MainActivity.class);
                     startActivity(intent);
@@ -86,6 +84,7 @@ public class AddLocation extends AppCompatActivity{
 
                 if(listAddress.size() != 0){
 
+                   // userAddressET.setText(myAddress.getAddressLine(0));
                     setMap();
                     return true;
                 }
@@ -105,8 +104,8 @@ public class AddLocation extends AppCompatActivity{
     private void setMap(){
 
         Address myAddress = listAddress.get(0);
+
         latLng = new LatLng(myAddress.getLatitude(), myAddress.getLongitude());
-        //myDb.insertNewLocation(currentLocation, String.valueOf(myAddress.getLatitude()), String.valueOf(myAddress.getLongitude()));
 
         mapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override

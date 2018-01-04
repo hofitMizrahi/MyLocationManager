@@ -8,13 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by user on 27/12/2017.
  */
 
-class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationRecyclerAdapter.MyViewHoder> {
+public class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationRecyclerAdapter.myViewHolder> {
 
     ArrayList<Loc> allLocations;
     Context context;
@@ -25,15 +24,15 @@ class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationRecycler
     }
 
     @Override
-    public MyViewHoder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public myViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View viewFromXML = LayoutInflater.from(context).inflate(R.layout.single_list_item, null);
-        MyViewHoder singleItem = new MyViewHoder(viewFromXML);
+        myViewHolder singleItem = new myViewHolder(viewFromXML);
         return singleItem;
 
     }
 
     @Override
-    public void onBindViewHolder(MyViewHoder singleItem, int position) {
+    public void onBindViewHolder(myViewHolder singleItem, int position) {
         Loc currentCity = allLocations.get(position);
 
         singleItem.bindMyCityData(currentCity);
@@ -45,27 +44,38 @@ class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationRecycler
         return allLocations.size();
     }
 
-    public class MyViewHoder extends RecyclerView.ViewHolder {
+    public class myViewHolder extends RecyclerView.ViewHolder {
         View itemView;
 
-        public MyViewHoder(View itemView) {
+        public myViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
 
         }
 
-        public void bindMyCityData(final Loc currentCity) {
+        public void bindMyCityData(final Loc currentLocation) {
             final TextView textView = itemView.findViewById(R.id.location_name_TV);
-            textView.setText(currentCity.getPlace());
+            textView.setText(currentLocation.getPlace());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    MyFragmentChanger citychanger= (MyFragmentChanger) context;
-                    citychanger.changeFragments(currentCity);
+                    //Replaces fragment to mapFragment and displays the location by the name of the place you clicked
+                    MyFragmentChanger cityChanger = (MyFragmentChanger) context;
+                    cityChanger.changeFragments(currentLocation);
                 }
             });
+
+//            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//
+//                    new DBmanager(context).deleteItem(currentLocation.getPlace());
+//
+//                    return true;
+//                }
+//            });
         }
     }
 }

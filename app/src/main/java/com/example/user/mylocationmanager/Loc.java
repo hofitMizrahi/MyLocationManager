@@ -7,11 +7,13 @@ import com.orm.SugarRecord;
  * Created by user on 27/12/2017.
  */
 
-public class Loc{
+public class Loc extends SugarRecord{
 
     private String place;
     private double lon;
     private double lat;
+
+    public Loc(){}
 
     public Loc(String place, double lon, double lat) {
         this.place = place;

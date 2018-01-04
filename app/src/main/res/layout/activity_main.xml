@@ -5,36 +5,40 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context="com.example.user.mylocationmanager.MainActivity"
-    android:paddingTop="@dimen/item_dimen"
-    android:paddingRight="@dimen/item_dimen"
-    android:paddingBottom="@dimen/item_dimen"
-    android:paddingLeft="@dimen/item_dimen">
+    >
 
     <LinearLayout
         android:id="@+id/list_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/button3"
+
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/button3"
-        android:layout_marginTop="11dp"
         android:orientation="horizontal" />
 
     <Button
-        android:id="@+id/add_location_Btn"
+        android:id="@+id/fi"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/list_layout"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/ic_action_name"
+        android:background="@drawable/ic_action_addlocation"
         android:onClick="addNewLocationBtn" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/add_location_Btn"
-        android:layout_marginEnd="23dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:text="Button" />
+
+    <Button
+        android:id="@+id/myLocation_Btn"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/fi"
+        android:background="@drawable/ic_action_name" />
 
 </RelativeLayout>

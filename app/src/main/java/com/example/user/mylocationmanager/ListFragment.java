@@ -13,15 +13,10 @@ import java.util.ArrayList;
 
 public class ListFragment extends Fragment {
 
-    static MyLocationRecyclerAdapter myLocationRecyclerAdapter;
-    ArrayList<Loc> allLocations;
-    DBmanager myDB;
+    private MyLocationRecyclerAdapter myLocationRecyclerAdapter;
+    private ArrayList<Loc> allLocations;
 
     public ListFragment() {
-    }
-
-    public static void refreshAdapter(){
-        myLocationRecyclerAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -30,20 +25,8 @@ public class ListFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_recyclerview, container, false);
 
-        myDB = new DBmanager(getActivity());
-        allLocations = new ArrayList<>();
 
-        Cursor cursor = myDB.getCursor();
-
-        while (cursor.moveToNext()){
-            // get the movie names from database from col1 "subject"
-            // and add the data to arrayList
-
-            String locationName = cursor.getString(1);
-            double lat = Double.parseDouble(cursor.getString(2));
-            double lon = Double.parseDouble(cursor.getString(3));
-            allLocations.add(new Loc(locationName,lat,lon));
-        }
+        allLocations = (ArrayList<Loc>) Loc.listAll(Loc.class);
 
         RecyclerView recyclerView= v.findViewById(R.id.recycler_fragment_ID);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
