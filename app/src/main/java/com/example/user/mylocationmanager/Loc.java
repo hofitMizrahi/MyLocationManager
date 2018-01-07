@@ -9,6 +9,7 @@ import com.orm.SugarRecord;
 
 public class Loc extends SugarRecord{
 
+   // private String descriptionName;
     private String place;
     private double lon;
     private double lat;
@@ -16,10 +17,16 @@ public class Loc extends SugarRecord{
     public Loc(){}
 
     public Loc(String place, double lon, double lat) {
+
+   //     this.descriptionName = descriptionName;
         this.place = place;
         this.lat  = lat;
         this.lon = lon;
     }
+
+    //public String getDescriptionName() {
+    //    return descriptionName;
+    //}
 
     public double getLon() {
         return lon;

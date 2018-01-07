@@ -16,9 +16,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements MyFragmentChanger{
 
-    int orientation;
     MapFragment mapFragment;
     ListFragment listFragment;
 
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements MyFragmentChanger
 
         if(isPortrait()) {
             mapFragment = new MapFragment();
-            getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.list_layout, mapFragment).commit();
+            getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.main_layout, mapFragment).commit();
         }
             mapFragment.getMapAsync(new OnMapReadyCallback() {
                 @Override
@@ -62,18 +63,34 @@ public class MainActivity extends AppCompatActivity implements MyFragmentChanger
     // check the orientation of the screen
     public boolean isPortrait(){
 
-        orientation = this.getResources().getConfiguration().orientation;
+        int orientation = this.getResources().getConfiguration().orientation;
 
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
 
-            Toast.makeText(this, "Portrait", Toast.LENGTH_SHORT).show();
             return true;
-        }else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-
-            Toast.makeText(this, "Landscape", Toast.LENGTH_SHORT).show();
-            return false;
         }
+
         return false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        setFragments();
+    }
+
+    private void setFragments(){
+
+        listFragment = new ListFragment();
+        getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.main_layout, listFragment).commit();
+
+        if(!isPortrait()){
+
+            mapFragment = new MapFragment();
+            getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.map_land_layout, mapFragment).commit();
+
+        }
     }
 
     //create the menu and inflate by main_menu.xml
@@ -89,40 +106,22 @@ public class MainActivity extends AppCompatActivity implements MyFragmentChanger
     public boolean onOptionsItemSelected(MenuItem item) {
 
         // click on Delete All
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             // alertDialog --> ask if the user wont to delete his list
             case R.id.deleteAll:
                 //delete from DB
+                ArrayList<Loc> loc = (ArrayList<Loc>) Loc.listAll(Loc.class);
+                Loc.deleteAll(Loc.class);
 
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(intent);
-                return true;
-            // user click to EXIT from this App
-            case R.id.exit:
-                finish();
-                return true;
         }
+
         return true;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        setFragments();
-    }
-
-    private void setFragments(){
-
-        listFragment= new ListFragment();
-        getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.list_layout, listFragment).commit();
-
-        if(!isPortrait()){
-
-            mapFragment = new MapFragment();
-            getFragmentManager().beginTransaction().addToBackStack("replacing").replace(R.id.map_land_layout, mapFragment).commit();
-
-        }
+    public void exitBtn(View view) {
+        finish();
     }
 }

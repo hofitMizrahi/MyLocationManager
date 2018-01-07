@@ -2,10 +2,14 @@ package com.example.user.mylocationmanager;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,8 @@ public class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationR
     @Override
     public myViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View viewFromXML = LayoutInflater.from(context).inflate(R.layout.single_list_item, null);
+        viewFromXML.setClipToOutline(true);
+
         myViewHolder singleItem = new myViewHolder(viewFromXML);
         return singleItem;
 
@@ -56,6 +62,15 @@ public class MyLocationRecyclerAdapter extends RecyclerView.Adapter <MyLocationR
         public void bindMyCityData(final Loc currentLocation) {
             final TextView textView = itemView.findViewById(R.id.location_name_TV);
             textView.setText(currentLocation.getPlace());
+
+//            Button mapBtn = itemView.findViewById(R.id.map_Btn);
+//            mapBtn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    Log.i("map", "image map click");
+//                }
+//            });
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

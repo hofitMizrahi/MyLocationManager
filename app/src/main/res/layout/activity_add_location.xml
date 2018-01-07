@@ -15,28 +15,30 @@
         android:orientation="horizontal"
         android:elevation="10dp"
         android:layout_centerHorizontal="true"
-        android:background="#fff"
+        android:background="@drawable/search_style"
         android:layout_marginTop="@dimen/item_dimen"
         android:layout_marginRight="@dimen/item_dimen"
         android:layout_marginBottom="4dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:layoutDirection="ltr"
         android:id="@+id/linearLayout">
 
         <EditText
             android:id="@+id/newAddrees_ET"
             android:layout_width="311dp"
-            android:gravity="center"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Enter address, zip code, "
-            android:inputType="textPersonName" />
+            android:gravity="center"
+            android:hint="Enter address, zip code.. "
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp" />
 
         <Button
 
             android:id="@+id/search_address_IV"
             android:layout_width="20dp"
-            android:layout_height="25dp"
+            android:layout_height="20dp"
             android:layout_marginRight="4dp"
 
             android:layout_weight="1"
@@ -45,11 +47,22 @@
 
     <Button
         android:id="@+id/save_Address_Btn"
+        android:background="@drawable/button_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="21dp"
         android:text="save" />
+
+    <Button
+        android:id="@+id/myLocation_Btn"
+        android:layout_width="63dp"
+        android:layout_height="47dp"
+        android:layout_alignStart="@+id/linearLayout"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/ic_action_mylocation"
+        android:onClick="getMyLocation" />
 </RelativeLayout>
 
